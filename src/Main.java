@@ -16,10 +16,11 @@ public class Main {
 
     static String dictPath = "./actualpasswords.txt";
     //static String dictPath = "./rockyou.txt"; // contains 181003, 41167
-    //static String dictPath = "./.txt";
+    //static String dictPath = "./realhuman_phill.txt";
     //static String dictPath = "./Top1M.txt"; // contains 181003, 41167, lion8888
     //static String dictPath = "./md5decryptor.uk.txt"; // contains 181003, 41167, wakemeupwhenseptemberends
     static HashMap<String, String> dict = new HashMap<>();
+    static long startTime, endTime;
     static String[] hashCode = {
             "6f047ccaa1ed3e8e05cde1c7ebc7d958", // 181003
             "275a5602cd91a468a0e10c226a03a39c", // 41167
@@ -29,23 +30,18 @@ public class Main {
             "554532464e066aba23aee72b95f18ba2"}; // wakemeupwhenseptemberends
 
     public static void main(String[] args) {
-
         readIn();
         findValues();
-
     }
 
     private static void findValues() {
-        //String[] results = null;
-        for(String str : hashCode){
-            if(dict.containsKey(str)){
-                System.out.printf("The password for hash value %s is %s.%n", str, dict.get(str));
+        for (String str : hashCode) {
+            startTime = System.currentTimeMillis();
+            if (dict.containsKey(str)) {
+                endTime = System.currentTimeMillis();
+                System.out.printf("The password for hash value %s is %s, it takes the program %.4f milliseconds to recover this password%n", str, dict.get(str), (float) endTime - startTime);
             }
         }
-        //find in dictionary
-        //keep track of time
-        //System.out.printf("The password for hash value %s is %s, it takes %n the program %.4f sec to recover this password%n", hash, pass, time);
-        //return results;
     }
 
     private static void readIn() {
@@ -55,6 +51,7 @@ public class Main {
         try {
             BufferedReader in = new BufferedReader(new FileReader(dictFile));
             int counter = 0;
+            startTime = System.currentTimeMillis();
             while ((str = in.readLine()) != null) { //read in all the passwords
 
                 //use md5 to convert it to hexadecimal
@@ -78,8 +75,9 @@ public class Main {
                     break;
                 }
             }
-
+            endTime = System.currentTimeMillis();
             in.close();
+            System.out.printf("It took the program %.4f milliseconds to populate the data structure.%n", (float) endTime - startTime);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         } catch (Exception e) {
