@@ -14,11 +14,10 @@ import java.security.MessageDigest;
 
 public class Main {
 
-    static String dictPath = "./actualpasswords.txt";
+    //static String dictPath = "./actualpasswords.txt";
     //static String dictPath = "./rockyou.txt"; // contains 181003, 41167
-    //static String dictPath = "./realhuman_phill.txt";
     //static String dictPath = "./Top1M.txt"; // contains 181003, 41167, lion8888
-    //static String dictPath = "./md5decryptor.uk.txt"; // contains 181003, 41167, wakemeupwhenseptemberends
+    static String dictPath = "./md5decryptor.uk.txt"; // contains 181003, 41167, wakemeupwhenseptemberends
     static HashMap<String, String> dict = new HashMap<>();
     static long startTime, endTime;
     static String[] hashCode = {
@@ -36,10 +35,11 @@ public class Main {
 
     private static void findValues() {
         for (String str : hashCode) {
-            startTime = System.currentTimeMillis();
+            startTime = System.nanoTime();
             if (dict.containsKey(str)) {
-                endTime = System.currentTimeMillis();
-                System.out.printf("The password for hash value %s is %s, it takes the program %.4f milliseconds to recover this password%n", str, dict.get(str), (float) endTime - startTime);
+                endTime = System.nanoTime();
+                //System.out.println(endTime-startTime);
+                System.out.printf("The password for hash value %s is %s, it takes the program %.3f milliseconds to recover this password.%n", str, dict.get(str), (float) (endTime - startTime)/1000000.0);
             }
         }
     }
@@ -77,7 +77,7 @@ public class Main {
             }
             endTime = System.currentTimeMillis();
             in.close();
-            System.out.printf("It took the program %.4f milliseconds to populate the data structure.%n", (float) endTime - startTime);
+            System.out.printf("It took the program %.3f seconds to populate the data structure.%n", (float) (endTime - startTime)/1000);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         } catch (Exception e) {
