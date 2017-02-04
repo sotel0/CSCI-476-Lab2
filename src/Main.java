@@ -24,7 +24,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        readIn(dictPath);
+        readIn();
         findValues();
 
     }
@@ -42,8 +42,8 @@ public class Main {
         //return results;
     }
 
-    private static void readIn(String fileName) {
-        File dictFile = new File(fileName);
+    private static void readIn() {
+        File dictFile = new File(dictPath);
         String str = null;
 
         try {
