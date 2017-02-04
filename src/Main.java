@@ -4,7 +4,8 @@ CSCI 476: Lab 2
 February 01, 2017
  */
 
-//https://crackstation.net/buy-crackstation-wordlist-password-cracking-dictionary.htm
+// https://crackstation.net/buy-crackstation-wordlist-password-cracking-dictionary.htm
+// https://wiki.skullsecurity.org/Passwords
 // Most of these lists were from https://github.com/danielmiessler/SecLists
 
 import java.io.*;
