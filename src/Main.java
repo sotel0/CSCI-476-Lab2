@@ -5,6 +5,7 @@ February 01, 2017
  */
 
 //https://crackstation.net/buy-crackstation-wordlist-password-cracking-dictionary.htm
+// Most of these lists were from https://github.com/danielmiessler/SecLists
 
 import java.io.*;
 import java.util.*;
@@ -13,6 +14,11 @@ import java.security.MessageDigest;
 public class Main {
 
     static String dictPath = "./actualpasswords.txt";
+    //static String dictPath = "./rockyou.txt"; // contains 181003, 41167
+    //static String dictPath = "./.txt";
+    //static String dictPath = "./14Mpass.txt";
+    //static String dictPath = "./Top1M.txt"; // contains 181003, 41167, lion8888
+    //static String dictPath = "./md5decryptor.uk.txt"; // contains 181003, 41167, wakemeupwhenseptemberends
     static HashMap<String, String> dict = new HashMap<>();
     static String[] hashCode = {
             "6f047ccaa1ed3e8e05cde1c7ebc7d958", // 181003
@@ -52,7 +58,7 @@ public class Main {
             while ((str = in.readLine()) != null) { //read in all the passwords
 
                 //use md5 to convert it to hexadecimal
-                //String str = "password123";
+                //System.out.println(str);
                 MessageDigest md = MessageDigest.getInstance("MD5");
                 md.update(str.getBytes());
                 byte byteData[] = md.digest();
