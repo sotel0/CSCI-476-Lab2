@@ -16,7 +16,6 @@ public class Main {
     static String dictPath = "./actualpasswords.txt";
     //static String dictPath = "./rockyou.txt"; // contains 181003, 41167
     //static String dictPath = "./.txt";
-    //static String dictPath = "./14Mpass.txt";
     //static String dictPath = "./Top1M.txt"; // contains 181003, 41167, lion8888
     //static String dictPath = "./md5decryptor.uk.txt"; // contains 181003, 41167, wakemeupwhenseptemberends
     static HashMap<String, String> dict = new HashMap<>();
